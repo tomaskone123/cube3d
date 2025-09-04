@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:31:50 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/03 15:54:12 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/04 15:47:05 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int32_t main(int argc, char* argv[])
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
 		error_exit(MALOC_FAIL_GAME, game);
-	if (argc == 1)
-		ft_printf(argv[0]);
+	argument_check(argv, argc, game);
 	return (EXIT_SUCCESS);
 }
