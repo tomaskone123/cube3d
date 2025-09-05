@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/04 15:16:51 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/05 13:27:13 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define ARGUMENT_NUMBER_FAIL "The number of argluments needed is 1"
 # define ARGUMENT_TYPE_FAIL "The map file type is not .cub"
 # define FAIL_OPEN_FILE "The map file failed to open"
+# define MALOC_FAIL_MAP "Couldn't allocate memory for the 'map' struct"
+
 
 typedef struct	s_map
 {
