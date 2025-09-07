@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/05 13:27:13 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/07 16:49:31 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@
 # include <fcntl.h>
 # include <string.h>
 
+# define CUB ".cub"
+# define PNG ".png"
+
 # define MALOC_FAIL_GAME "Couldn't allocate memory for the 'game' struct"
 # define ARGUMENT_NUMBER_FAIL "The number of argluments needed is 1"
-# define ARGUMENT_TYPE_FAIL "The map file type is not .cub"
+# define EXTENTION_CUB_FAIL "The map file type is not .cub"
+# define EXTENTION_PNG_FAIL "The map file type is not .png"
 # define FAIL_OPEN_FILE "The map file failed to open"
 # define MALOC_FAIL_MAP "Couldn't allocate memory for the 'map' struct"
 
@@ -60,6 +64,8 @@ typedef struct	s_game
 
 void error_exit(char *error_message, t_game *game);
 int free_game(t_game *game);
-int	argument_check(char *argv[], int argc, t_game *game);
+int	argument_check(char *map_argument, int argc, t_game *game);
 
+// UTILS
+int	file_exists(char *file_path, char* extention, t_game *game);
 #endif
