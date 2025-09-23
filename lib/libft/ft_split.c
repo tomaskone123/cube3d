@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkonecny <tkonecny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 19:15:48 by tomas             #+#    #+#             */
-/*   Updated: 2024/06/07 17:10:39 by tkonecny         ###   ########.fr       */
+/*   Updated: 2025/09/23 11:24:29 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// static void free_words(char **word, int count)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	while (i < count)
+// 	{
+// 		free(word[i]);
+// 		i++;
+// 	}
+// 	free(word);
+// }
+
 static int	ar_mal(char **result, int location, size_t buffer)
 {
 	result[location] = malloc(buffer);
@@ -22,6 +35,7 @@ static int	ar_mal(char **result, int location, size_t buffer)
 		return (1);
 	return (0);
 }
+
 
 static int	wordscpy(char **result, char const *s, char c)
 {

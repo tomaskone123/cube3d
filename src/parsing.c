@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 18:08:57 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/07 19:20:33 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/23 13:57:04 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@
 	-
 */
 
-static char	**ft_split_special(char* file_content)
-{
-	
-}
+
 
 static void	parse_file(t_game *game)
 {
@@ -63,10 +60,19 @@ static void	parse_file(t_game *game)
 		line = get_next_line(game->map->fd);
 	}
 	close(game->map->fd);
-	game->map->parsed_file = ft_split_special(file_content);
+	game->map->parsed_file = ft_split(file_content, '\n');
+	free(file_content);
+	// int i = 0;
+	// while (game->map->parsed_file[i])
+	// {
+	// 	ft_printf("line: %d | %s\n", i, game->map->parsed_file[i]);
+	// 	i++;
+	// }
 }
 
 void	parser(t_game *game)
 {
 	parse_file(game);
+	check_duplicates(game);
+	get_textures(game);
 }

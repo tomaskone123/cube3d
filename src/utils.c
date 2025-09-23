@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 15:28:37 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/07 16:47:35 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/23 14:23:00 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,26 @@ int	file_exists(char *filepath, char* extention, t_game *game)
 			error_exit(EXTENTION_PNG_FAIL, game);
 	}
 	return (0);
+}
+
+
+int	is_space(char value)
+{
+	if ((7 <= value && value <= 13) || value == 32)
+		return (1);
+	else
+		return (0);
+}
+
+int	space_increment(char* string, int number)
+{
+	while (string[number])
+	{
+		if (is_space(string[number]))
+			number++;
+		else
+			break;
+	}
+	return (number);
 }
 
