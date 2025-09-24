@@ -6,13 +6,13 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 11:06:56 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 11:57:10 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 13:15:28 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
 
-static void	check_with_value(char* value, t_game* game)
+static void	check_with_value(char *value, t_game *game)
 {
 	char	**parsed_file;
 	int		i;
@@ -26,7 +26,8 @@ static void	check_with_value(char* value, t_game* game)
 	{
 		j = 0;
 		j = space_increment(parsed_file[i], j);
-		if (ft_strncmp(parsed_file[i] + j, value, ft_strlen(value)) == 0 && is_space(parsed_file[i][j + ft_strlen(value)]))
+		if (ft_strncmp(parsed_file[i] + j, value, ft_strlen(value)) == 0
+			&& is_space(parsed_file[i][j + ft_strlen(value)]))
 			count++;
 		i++;
 	}
@@ -36,7 +37,7 @@ static void	check_with_value(char* value, t_game* game)
 		error_exit(DUP_VALUE, game);
 }
 
-void	check_duplicates(t_game* game)
+void	check_duplicates(t_game *game)
 {
 	check_with_value("NO", game);
 	check_with_value("SO", game);

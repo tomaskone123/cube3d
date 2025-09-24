@@ -6,16 +6,15 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:43:08 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 11:05:29 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 13:14:57 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
 
-
-int free_array(char** array)
+int	free_array(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i])
@@ -27,7 +26,7 @@ int free_array(char** array)
 	return (0);
 }
 
-int free_map(t_map *map)
+int	free_map(t_map *map)
 {
 	if (map->ceiling_color)
 		free(map->ceiling_color);
@@ -45,11 +44,12 @@ int free_map(t_map *map)
 		free_array(map->parsed_file);
 	if (map->map_grid)
 		free_array(map->map_grid);
-	free(map);
+	if ()
+		free(map);
 	return (0);
 }
 
-int free_game(t_game *game)
+int	free_game(t_game *game)
 {
 	if (game->map)
 		free_map(game->map);

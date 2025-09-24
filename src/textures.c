@@ -6,41 +6,45 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:57:40 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 12:08:29 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 13:15:39 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
 
-static void parse_texture_line(char *line, t_game* game)
+static void	load_textures(t_game *game)
 {
-	int	i;
+	game->map->no_mlx_txt = mlx_load_png(game->map->no_texture);
+	game->map->so_mlx_txt = mlx_load_png(game->map->so_texture);
+	game->map->we_mlx_txt = mlx_load_png(game->map->we_texture);
+	game->map->ea_mlx_txt = mlx_load_png(game->map->ea_texture);
+}
+
+static void	parse_texture_line(char *line, t_game *game)
+{
+	int			i;
+	t_txt_array	txt[] = {{"NO", &game->map->no_texture}, {"SO",
+			&game->map->so_texture}, {"WE", &game->map->we_texture}, {"EA",
+			&game->map->ea_texture}, {NULL, NULL}};
 
 	i = 0;
-	t_txt_array txt[] = {
-		{"NO", &game->map->no_texture},
-		{"SO", &game->map->so_texture},
-		{"WE", &game->map->we_texture},
-		{"EA", &game->map->ea_texture},
-		{NULL, NULL}
-	};
 	while (txt[i].id)
 	{
 		if (ft_strncmp(line, txt[i].id, 2) == 0)
 		{
-			line +=2;
+			line += 2;
 			while (*line && is_space(*line))
 				line++;
 			*(txt[i].texture) = ft_strtrim(line, " \t\n\r\v\f");
 			if (!*(txt[i].texture))
 				error_exit(MALOC_FAIL_TEXTURE, game);
-			break;
+			break ;
 		}
 		i++;
 	}
 }
 
-static void	parse_colour_line(char* line, t_game* game)
+static void	parse_colour_line(char *line, t_game *game)
 {
 	// ft_printf("%s\n", line);
 	if (ft_strncmp(line, "C ", 2) == 0)
@@ -80,6 +84,10 @@ int	get_textures(t_game *game)
 		parse_colour_line(line, game);
 		i++;
 	}
-	// ft_printf("NO:%s\nSO:%s\nWE:%s\nEA:%s\nC:%s\nF:%s\n", game->map->no_texture, game->map->so_texture, game->map->we_texture, game->map->ea_texture, game->map->ceiling_color, game->map->floor_color);
+	// ft_printf("NO:%s\nSO:%s\nWE:%s\nEA:%s\nC:%s\nF:%s\n",
+		game->map->no_texture, game->map->so_texture, game->map->we_texture,
+		game->map->ea_texture, game->map->ceiling_color,
+		game->map->floor_color);
+	load_textures(game);
 	return (0);
 }

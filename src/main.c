@@ -6,13 +6,13 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:31:50 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/07 19:08:01 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 13:15:22 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
 
-int32_t main(int argc, char* argv[])
+int32_t	main(int argc, char *argv[])
 {
 	t_game	*game;
 
@@ -24,6 +24,3 @@ int32_t main(int argc, char* argv[])
 	free_game(game);
 	return (EXIT_SUCCESS);
 }
-
-
-

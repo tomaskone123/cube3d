@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 19:15:48 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/23 11:24:29 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 13:16:43 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static int	ar_mal(char **result, int location, size_t buffer)
 		return (1);
 	return (0);
 }
-
 
 static int	wordscpy(char **result, char const *s, char c)
 {

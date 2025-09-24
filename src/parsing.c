@@ -6,12 +6,11 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 18:08:57 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/23 13:57:04 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 13:15:25 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
-
 
 // LIST OF STUFF I NEED FOR PARSING
 /*
@@ -38,8 +37,6 @@
 	- MUST be inclosed by walls
 	-
 */
-
-
 
 static void	parse_file(t_game *game)
 {

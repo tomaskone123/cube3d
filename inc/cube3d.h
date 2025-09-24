@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 10:54:17 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 13:15:56 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include "../lib/libft/libft.h"
-# include <math.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
+# include <stdio.h>
+# include <stdlib.h>
 # include <string.h>
+# include <unistd.h>
 
 # define CUB ".cub"
 # define PNG ".png"
@@ -37,60 +37,60 @@
 # define MALOC_FAIL_TEXTURE "Couldn't allocate memory for the texture variable"
 # define MALOC_FAIL_COLOUR "Couldn't allocate memory for the clour variable"
 
-typedef struct	s_map
+typedef struct s_map
 {
-	int			fd;
+	int				fd;
 
-	char		**parsed_file;
-	char		**map_grid;
+	char			**parsed_file;
+	char			**map_grid;
 
-	int			width;
-	int			height;
+	int				width;
+	int				height;
 
-	int			player_x;
-	int			player_y;
-	char		player_dir;
+	int				player_x;
+	int				player_y;
+	char			player_dir;
 
-	char		*no_texture;
-	char		*so_texture;
-	char		*we_texture;
-	char		*ea_texture;
+	char			*no_texture;
+	char			*so_texture;
+	char			*we_texture;
+	char			*ea_texture;
+	mlx_texture_t	*no_mlx_txt;
+	mlx_texture_t	*so_mlx_txt;
+	mlx_texture_t	*we_mlx_txt;
+	mlx_texture_t	*ea_mlx_txt;
 
-	char*		floor_color;
-	char*		ceiling_color;
-}				t_map;
+	char			*floor_color;
+	char			*ceiling_color;
+}					t_map;
 
-typedef struct	s_txt_array
+typedef struct s_txt_array
 {
-	char *id;
-	char **texture;
-}				t_txt_array;
+	char			*id;
+	char			**texture;
+}					t_txt_array;
 
-typedef struct	s_game
+typedef struct s_game
 {
-	mlx_t		*mlx;
-	t_map		*map;
-}				t_game;
+	mlx_t			*mlx;
+	t_map			*map;
+}					t_game;
 
 // ERROR HANDELING
-void error_exit(char *error_message, t_game *game);
+void				error_exit(char *error_message, t_game *game);
 
 // FREEING FUNCTION
-int free_game(t_game *game);
-
-
+int					free_game(t_game *game);
 
 // PARSER
-void	parser(t_game *game);
-int	argument_check(char *map_argument, int argc, t_game *game);
-void	check_duplicates(t_game* game);
-int		get_textures(t_game *game);
-
+void				parser(t_game *game);
+int					argument_check(char *map_argument, int argc, t_game *game);
+void				check_duplicates(t_game *game);
+int					get_textures(t_game *game);
 
 // UTILS
-int	file_exists(char *file_path, char* extention, t_game *game);
-int	space_increment(char* string, int number);
-int	is_space(char value);
-
+int					file_exists(char *file_path, char *extention, t_game *game);
+int					space_increment(char *string, int number);
+int					is_space(char value);
 
 #endif
