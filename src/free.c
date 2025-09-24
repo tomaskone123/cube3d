@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:43:08 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/23 14:51:52 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 11:05:29 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ int free_array(char** array)
 
 int free_map(t_map *map)
 {
+	if (map->ceiling_color)
+		free(map->ceiling_color);
+	if (map->floor_color)
+		free(map->floor_color);
 	if (map->no_texture)
 		free(map->no_texture);
 	if (map->so_texture)

@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/23 18:23:01 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 10:54:17 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define MISSING_VALUE "Value is missing in the map file"
 # define DUP_VALUE "There is a duplicate in the map file"
 # define MALOC_FAIL_TEXTURE "Couldn't allocate memory for the texture variable"
+# define MALOC_FAIL_COLOUR "Couldn't allocate memory for the clour variable"
 
 typedef struct	s_map
 {
@@ -55,8 +56,8 @@ typedef struct	s_map
 	char		*we_texture;
 	char		*ea_texture;
 
-	int			floor_color;
-	int			ceiling_color;
+	char*		floor_color;
+	char*		ceiling_color;
 }				t_map;
 
 typedef struct	s_txt_array

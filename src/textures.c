@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:57:40 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/23 18:23:42 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 12:08:29 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,26 @@ static void parse_texture_line(char *line, t_game* game)
 
 static void	parse_colour_line(char* line, t_game* game)
 {
+	// ft_printf("%s\n", line);
 	if (ft_strncmp(line, "C ", 2) == 0)
 	{
+		line++;
 		while (*line && is_space(*line))
 			line++;
-		game->map->ceiling_color = ft_strtrim(line, " \t\n\r\v\f")
+		game->map->ceiling_color = ft_strtrim(line, " \t\n\r\v\f");
+		if (!game->map->ceiling_color)
+			error_exit(MALOC_FAIL_COLOUR, game);
+		// ft_printf("C:%s\n", game->map->ceiling_color);
+	}
+	if (ft_strncmp(line, "F ", 2) == 0)
+	{
+		line++;
+		while (*line && is_space(*line))
+			line++;
+		game->map->floor_color = ft_strtrim(line, " \t\n\r\v\f");
+		if (!game->map->floor_color)
+			error_exit(MALOC_FAIL_COLOUR, game);
+		// ft_printf("F:%s\n", game->map->floor_color);
 	}
 }
 
