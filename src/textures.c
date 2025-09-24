@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:57:40 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 14:14:11 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 15:05:29 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,9 @@ int	get_textures(t_game *game)
 	file_exists(game->map->we_texture, PNG, game);
 	file_exists(game->map->ea_texture, PNG, game);
 	load_textures(game);
+	game->map->ceiling_final = color_convert(game->map->ceiling_color, game);
+	game->map->floor_final = color_convert(game->map->floor_color, game);
+
+	ft_printf("c:%d\nf:%d\n", game->map->ceiling_final, game->map->floor_final);
 	return (0);
 }

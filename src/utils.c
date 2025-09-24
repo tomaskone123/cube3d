@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 15:28:37 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 13:15:52 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 14:47:51 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,14 @@ int	space_increment(char *string, int number)
 			break ;
 	}
 	return (number);
+}
+
+int	array_size(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
 }

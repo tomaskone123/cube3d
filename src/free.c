@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:43:08 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 14:02:12 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 14:17:43 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	free_array(char **array)
 	return (0);
 }
 
-static void txt_delete(t_map* map)
+static void	txt_delete(t_map *map)
 {
 	if (map->no_mlx_txt)
 		mlx_delete_texture(map->no_mlx_txt);
@@ -57,7 +57,7 @@ int	free_map(t_map *map)
 	if (map->map_grid)
 		free_array(map->map_grid);
 	txt_delete(map);
-		free(map);
+	free(map);
 	return (0);
 }
 
