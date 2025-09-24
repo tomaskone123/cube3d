@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:57:40 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 13:15:39 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 14:14:11 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,30 @@ static void	load_textures(t_game *game)
 	game->map->so_mlx_txt = mlx_load_png(game->map->so_texture);
 	game->map->we_mlx_txt = mlx_load_png(game->map->we_texture);
 	game->map->ea_mlx_txt = mlx_load_png(game->map->ea_texture);
+	if (!(game->map->no_mlx_txt) || !(game->map->so_mlx_txt) || !(game->map->we_mlx_txt) || !(game->map->ea_mlx_txt))
+		error_exit(TXT_LOAD_FAIL, game);
+}
+
+static void	init_txt_array(t_game *game, t_txt_array txt[5])
+{
+	txt[0].id = "NO";
+	txt[0].texture = &game->map->no_texture;
+	txt[1].id = "SO";
+	txt[1].texture = &game->map->so_texture;
+	txt[2].id = "WE";
+	txt[2].texture = &game->map->we_texture;
+	txt[3].id = "EA";
+	txt[3].texture = &game->map->ea_texture;
+	txt[4].id = NULL;
+	txt[4].texture = NULL;
 }
 
 static void	parse_texture_line(char *line, t_game *game)
 {
 	int			i;
-	t_txt_array	txt[] = {{"NO", &game->map->no_texture}, {"SO",
-			&game->map->so_texture}, {"WE", &game->map->we_texture}, {"EA",
-			&game->map->ea_texture}, {NULL, NULL}};
+	t_txt_array	txt[5];
 
+	init_txt_array(game, txt);
 	i = 0;
 	while (txt[i].id)
 	{
@@ -85,9 +100,13 @@ int	get_textures(t_game *game)
 		i++;
 	}
 	// ft_printf("NO:%s\nSO:%s\nWE:%s\nEA:%s\nC:%s\nF:%s\n",
-		game->map->no_texture, game->map->so_texture, game->map->we_texture,
-		game->map->ea_texture, game->map->ceiling_color,
-		game->map->floor_color);
+	// 	game->map->no_texture, game->map->so_texture, game->map->we_texture,
+	// 	game->map->ea_texture, game->map->ceiling_color,
+	// 	game->map->floor_color);
+	file_exists(game->map->no_texture, PNG, game);
+	file_exists(game->map->so_texture, PNG, game);
+	file_exists(game->map->we_texture, PNG, game);
+	file_exists(game->map->ea_texture, PNG, game);
 	load_textures(game);
 	return (0);
 }

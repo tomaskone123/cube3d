@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:41:01 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 13:15:36 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 13:18:43 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ int	argument_check(char *map_argument, int argc, t_game *game)
 	if (!game->map)
 		error_exit(MALOC_FAIL_MAP, game);
 	game->map->fd = open(map_argument, O_RDONLY);
-	// add the map init here where the functions check the file if it's openable and get all the neccessary data from the .cub fil
 	return (0);
 }

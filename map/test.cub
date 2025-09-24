@@ -1,9 +1,9 @@
-SO           ./path_to_the_south_texture
-       NO        ./path_to_the_north_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+SO /home/tomas/school/cube3d/textures/brick_wall.png
+NO /home/tomas/school/cube3d/textures/brick_wall.png
+WE /home/tomas/school/cube3d/textures/brick_wall.png
+EA /home/tomas/school/cube3d/textures/brick_wall.png
 
-F         220,100,0               
+F         220,100,0
 C         225,30,0
 
 

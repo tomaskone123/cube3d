@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 13:15:56 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 13:58:48 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define DUP_VALUE "There is a duplicate in the map file"
 # define MALOC_FAIL_TEXTURE "Couldn't allocate memory for the texture variable"
 # define MALOC_FAIL_COLOUR "Couldn't allocate memory for the clour variable"
+# define TXT_LOAD_FAIL "One of the textures failed to load"
+
 
 typedef struct s_map
 {
