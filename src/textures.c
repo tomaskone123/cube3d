@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:57:40 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 15:05:29 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 19:30:14 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static void	load_textures(t_game *game)
 	game->map->so_mlx_txt = mlx_load_png(game->map->so_texture);
 	game->map->we_mlx_txt = mlx_load_png(game->map->we_texture);
 	game->map->ea_mlx_txt = mlx_load_png(game->map->ea_texture);
-	if (!(game->map->no_mlx_txt) || !(game->map->so_mlx_txt) || !(game->map->we_mlx_txt) || !(game->map->ea_mlx_txt))
+	if (!(game->map->no_mlx_txt) || !(game->map->so_mlx_txt)
+		|| !(game->map->we_mlx_txt) || !(game->map->ea_mlx_txt))
 		error_exit(TXT_LOAD_FAIL, game);
 }
 
@@ -110,7 +111,5 @@ int	get_textures(t_game *game)
 	load_textures(game);
 	game->map->ceiling_final = color_convert(game->map->ceiling_color, game);
 	game->map->floor_final = color_convert(game->map->floor_color, game);
-
-	ft_printf("c:%d\nf:%d\n", game->map->ceiling_final, game->map->floor_final);
 	return (0);
 }

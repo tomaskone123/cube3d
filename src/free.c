@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:43:08 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 14:17:43 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 19:56:15 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	txt_delete(t_map *map)
 		mlx_delete_texture(map->no_mlx_txt);
 	if (map->so_mlx_txt)
 		mlx_delete_texture(map->so_mlx_txt);
-	if (map->we_mlx_txt)
+	if (map->we_mlx_txt)		
 		mlx_delete_texture(map->we_mlx_txt);
 	if (map->ea_mlx_txt)
 		mlx_delete_texture(map->ea_mlx_txt);

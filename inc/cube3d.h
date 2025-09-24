@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 15:03:47 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/24 19:56:49 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../lib/libft/libft.h"
 # include <fcntl.h>
 # include <math.h>
+# include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -39,7 +40,6 @@
 # define TXT_LOAD_FAIL "One of the textures failed to load"
 # define CLR_WRONG_NUMBER "The color is not number"
 # define CLR_NOT_ENOUGH "Wrong format of color\n(Needs to be 0-255 as R,G,B) :^)"
-
 
 typedef struct s_map
 {
@@ -66,8 +66,8 @@ typedef struct s_map
 
 	char			*floor_color;
 	char			*ceiling_color;
-	unsigned int	ceiling_final;
-	unsigned int	floor_final;
+	uint32_t		ceiling_final;
+	uint32_t		floor_final;
 }					t_map;
 
 typedef struct s_txt_array
@@ -87,13 +87,14 @@ void				error_exit(char *error_message, t_game *game);
 
 // FREEING FUNCTION
 int					free_game(t_game *game);
+int					free_array(char **array);
 
 // PARSER
 void				parser(t_game *game);
 int					argument_check(char *map_argument, int argc, t_game *game);
 void				check_duplicates(t_game *game);
 int					get_textures(t_game *game);
-int				color_convert(char *color, t_game *game);
+int					color_convert(char *color, t_game *game);
 
 // UTILS
 int					file_exists(char *file_path, char *extention, t_game *game);
