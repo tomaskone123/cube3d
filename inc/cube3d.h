@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 19:56:49 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/25 12:43:42 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define TXT_LOAD_FAIL "One of the textures failed to load"
 # define CLR_WRONG_NUMBER "The color is not number"
 # define CLR_NOT_ENOUGH "Wrong format of color\n(Needs to be 0-255 as R,G,B) :^)"
+# define MAP_VALUES_WRONG "Wrong values in the map"
 
 typedef struct s_map
 {
@@ -93,8 +94,9 @@ int					free_array(char **array);
 void				parser(t_game *game);
 int					argument_check(char *map_argument, int argc, t_game *game);
 void				check_duplicates(t_game *game);
-int					get_textures(t_game *game);
+int					get_textures_and_colors(t_game *game);
 int					color_convert(char *color, t_game *game);
+void				get_map(t_game* game);
 
 // UTILS
 int					file_exists(char *file_path, char *extention, t_game *game);

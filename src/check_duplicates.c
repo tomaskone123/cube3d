@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 11:06:56 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 13:15:28 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/25 10:43:20 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	check_with_value(char *value, t_game *game)
 	i = 0;
 	count = 0;
 	parsed_file = game->map->parsed_file;
-	while (parsed_file[i])
+	while (parsed_file[i] && i <= 6)
 	{
 		j = 0;
 		j = space_increment(parsed_file[i], j);

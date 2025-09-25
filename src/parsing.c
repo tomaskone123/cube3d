@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 18:08:57 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 20:16:01 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/25 13:21:12 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,20 @@
 	-
 */
 
+static int	is_empty_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static void	parse_file(t_game *game)
 {
 	char	*line;
@@ -50,26 +64,32 @@ static void	parse_file(t_game *game)
 	line = get_next_line(game->map->fd);
 	while (line)
 	{
-		temp = ft_strjoin(file_content, line);
-		free(file_content);
-		file_content = temp;
+		if (!is_empty_line(line))
+		{
+			temp = ft_strjoin(file_content, line);
+			free(file_content);
+			file_content = temp;
+		}
 		free(line);
 		line = get_next_line(game->map->fd);
 	}
 	close(game->map->fd);
 	game->map->parsed_file = ft_split(file_content, '\n');
 	free(file_content);
-	int i = 0;
-	while (game->map->parsed_file[i])
-	{
-		ft_printf("line: %d |\t %s\n", i, game->map->parsed_file[i]);
-		i++;
-	}
+
+	// int i = 0;
+	// while (game->map->parsed_file[i])
+	// {
+	// 	ft_printf("line: %d |\t %s\n", i, game->map->parsed_file[i]);
+	// 	i++;
+	// }
+	// printf("\n");
 }
 
 void	parser(t_game *game)
 {
 	parse_file(game);
 	check_duplicates(game);
-	get_textures(game);
+	get_textures_and_colors(game);
+	get_map(game);
 }
