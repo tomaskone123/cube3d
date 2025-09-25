@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 18:08:57 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/25 13:21:12 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/25 15:06:28 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static void	parse_file(t_game *game)
 	close(game->map->fd);
 	game->map->parsed_file = ft_split(file_content, '\n');
 	free(file_content);
+	
 
 	// int i = 0;
 	// while (game->map->parsed_file[i])
@@ -85,6 +86,7 @@ static void	parse_file(t_game *game)
 	// }
 	// printf("\n");
 }
+
 
 void	parser(t_game *game)
 {
