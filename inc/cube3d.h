@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/25 12:43:42 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/25 15:48:45 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define CLR_WRONG_NUMBER "The color is not number"
 # define CLR_NOT_ENOUGH "Wrong format of color\n(Needs to be 0-255 as R,G,B) :^)"
 # define MAP_VALUES_WRONG "Wrong values in the map"
+# define PLAYER_COUNT "Wrong amount of players"
 
 typedef struct s_map
 {
