@@ -6,10 +6,58 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 15:50:54 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/25 15:54:25 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/26 13:49:26 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
 
-void	found_player(t_game* game, )
+void	get_max_width(t_game *game, char **map, int height)
+{
+	size_t	max;
+	int	i;
+
+	i = 0;
+	max = 0;
+	while (i < height)
+	{
+		if (ft_strlen(map[i]) > max)
+			max = ft_strlen(map[i]);
+		i++;
+	}
+	game->map->width = max;
+}
+
+void	fill_map(t_game *game, char *new_line, int i)
+{
+	int	j;
+
+	j = 0;
+	while (game->map->map_grid[i][j])
+	{
+		if (game->map->map_grid[i][j] == ' ')
+			new_line[j] = '1';
+		else
+			new_line[j] = game->map->map_grid[i][j];
+		j++;
+	}
+	while (j < game->map->width)
+	{
+		new_line[j] = '1';
+		j++;
+	}
+	new_line[j] = '\0';
+	free(game->map->map_grid[i]);
+	game->map->map_grid[i] = new_line;
+}
+
+void	find_player(t_game *game, char value, int i, int j)
+{
+	if (value == 'N' || value == 'S' || value == 'E' || value == 'W')
+	{
+		game->map->player_x = j;
+		game->map->player_y = i;
+		game->map->player_dir = value;
+		game->map->found++;
+	}
+}

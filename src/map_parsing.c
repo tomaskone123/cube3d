@@ -6,11 +6,35 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 10:26:31 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/25 15:49:07 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/26 15:17:48 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
+
+int	flood_fill(t_game *game, int y, int x, char **visited)
+{
+	char	c;
+
+	if (y < 0 || y >= game->map->height || x < 0
+		|| x >= (int)ft_strlen(visited[y]))
+		return (0);
+	c = visited[y][x];
+	if (c == '1' || c == 'V')
+		return (1);
+	if (c == ' ' )
+		return (0);
+	visited[y][x] = 'V';
+	if (!flood_fill(game, y - 1, x, visited))
+		return (0);
+	if (!flood_fill(game, y + 1, x, visited))
+		return (0);
+	if (!flood_fill(game, y, x - 1, visited))
+		return (0);
+	if (!flood_fill(game, y, x + 1, visited))
+		return (0);
+	return (1);
+}
 
 static int	is_map_values(char **line, t_game *game)
 {
@@ -28,45 +52,36 @@ static int	is_map_values(char **line, t_game *game)
 			if (line[i][j] != '1' && line[i][j] != '0' && line[i][j] != 'N'
 				&& line[i][j] != 'S' && line[i][j] != 'E' && line[i][j] != 'W'
 				&& !is_space(line[i][j]))
-				return (0);
+				error_exit(MAP_VALUES_WRONG, game);
+			find_player(game, line[i][j], i, j);
 			j++;
 		}
 		game->map->map_grid[i] = ft_strdup(line[i]);
-		ft_printf("%s\n", game->map->map_grid[i]);
+		game->map->flood_grid[i] = ft_strdup(line[i]);
 		i++;
 	}
+	if ((game->map->found > 1) || (game->map->found <= 0))
+		error_exit(PLAYER_COUNT, game);
 	game->map->height = i;
 	return (1);
 }
 
-static void	find_player(t_game *game)
+void	normalize_map(t_game *game)
 {
-	int	i;
-	int	j;
-	int	found;
+	int		i;
+	char	*new_line;
 
 	i = 0;
-	found = 0;
-	while (game->map->map_grid[i])
+	get_max_width(game, game->map->map_grid, game->map->height);
+	while (i < game->map->height)
 	{
-		j = 0;
-		while (game->map->map_grid[i][j])
-		{
-			if (game->map->map_grid[i][j] == 'N'
-				|| game->map->map_grid[i][j] == 'S'
-				|| game->map->map_grid[i][j] == 'E'
-				|| game->map->map_grid[i][j] == 'W')
-			{
-				found++;
-				game->map->player_x = j;
-				game->map->player_y = i;
-				game->map->player_dir = game->map->map_grid[i][j];
-			}
-		}
+		new_line = malloc(game->map->width + 1);
+		if (!new_line)
+			error_exit(MALOC_FAIL_MAP_NL, game);
+		fill_map(game, new_line, i);
+		ft_printf("%s\n", game->map->map_grid[i]);
 		i++;
 	}
-	if ((found > 1) || (found <= 0))
-		error_exit(PLAYER_COUNT, game);
 }
 
 void	get_map(t_game *game)
@@ -75,7 +90,11 @@ void	get_map(t_game *game)
 
 	size = array_size(game->map->parsed_file + 6);
 	game->map->map_grid = ft_calloc(size + 1, sizeof(char *));
-	if (!is_map_values(game->map->parsed_file + 6, game))
-		error_exit(MAP_VALUES_WRONG, game);
-	find_player(game);
+	game->map->flood_grid = ft_calloc(size + 1, sizeof(char *));
+	if (!game->map->map_grid || !game->map->flood_grid)
+		error_exit(MALOC_FAIL_MAP_GRID, game);
+	is_map_values(game->map->parsed_file + 6, game);
+	if (!flood_fill(game, game->map->player_y, game->map->player_x, game->map->flood_grid))
+		error_exit(MAP_NOT_CLOSED, game);
+	normalize_map(game);
 }

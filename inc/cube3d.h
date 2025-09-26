@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/25 15:48:45 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/26 14:43:49 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,20 @@
 # define CLR_NOT_ENOUGH "Wrong format of color\n(Needs to be 0-255 as R,G,B) :^)"
 # define MAP_VALUES_WRONG "Wrong values in the map"
 # define PLAYER_COUNT "Wrong amount of players"
+# define MALOC_FAIL_MAP_NL "Couldn't allocate memory for the 'new_line' in normalize_map"
+# define MALOC_FAIL_MAP_GRID "Couldn't allocate memory for the 'map_grid' in get_map"
+# define MALOC_FAIL_VISITED "Couldn't allocate memory for the 'visited' in get_map"
+# define MAP_NOT_CLOSED "The map is not enclosed in walls"
+
 
 typedef struct s_map
 {
 	int				fd;
+	int				found;
 
 	char			**parsed_file;
 	char			**map_grid;
+	char			**flood_grid;
 
 	int				width;
 	int				height;
@@ -104,5 +111,11 @@ int					file_exists(char *file_path, char *extention, t_game *game);
 int					space_increment(char *string, int number);
 int					is_space(char value);
 int					array_size(char **array);
+void				get_max_width(t_game *game, char** map, int height);
+void				fill_map(t_game *game, char *new_line, int i);
+void				find_player(t_game *game, char value, int i, int j);
+
+
+
 
 #endif

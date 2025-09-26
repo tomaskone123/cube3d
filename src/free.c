@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:43:08 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 19:56:15 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/26 15:04:22 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	txt_delete(t_map *map)
 		mlx_delete_texture(map->no_mlx_txt);
 	if (map->so_mlx_txt)
 		mlx_delete_texture(map->so_mlx_txt);
-	if (map->we_mlx_txt)		
+	if (map->we_mlx_txt)
 		mlx_delete_texture(map->we_mlx_txt);
 	if (map->ea_mlx_txt)
 		mlx_delete_texture(map->ea_mlx_txt);
@@ -56,6 +56,8 @@ int	free_map(t_map *map)
 		free_array(map->parsed_file);
 	if (map->map_grid)
 		free_array(map->map_grid);
+	if (map->flood_grid)
+		free_array(map->flood_grid);
 	txt_delete(map);
 	free(map);
 	return (0);
@@ -69,3 +71,5 @@ int	free_game(t_game *game)
 		free(game);
 	return (0);
 }
+
+
