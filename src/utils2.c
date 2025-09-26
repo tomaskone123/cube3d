@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 15:50:54 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/26 13:49:26 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/26 15:24:09 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	get_max_width(t_game *game, char **map, int height)
 {
 	size_t	max;
-	int	i;
+	int		i;
 
 	i = 0;
 	max = 0;
@@ -60,4 +60,10 @@ void	find_player(t_game *game, char value, int i, int j)
 		game->map->player_dir = value;
 		game->map->found++;
 	}
+}
+
+void	assign_map_variable(t_game *game, char **line, int i)
+{
+	game->map->map_grid[i] = ft_strdup(line[i]);
+	game->map->flood_grid[i] = ft_strdup(line[i]);
 }

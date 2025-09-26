@@ -6,37 +6,11 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 18:08:57 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/25 15:06:28 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/26 15:24:56 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
-
-// LIST OF STUFF I NEED FOR PARSING
-/*
-	Except for the map element all of the content can be separated by empty lines
-	The content CAN be in any order in the file
-	Exept for the map all of the elements CAN be separated by spaces
-	- No duplicates or missing of texture and color
-		NO
-		SO
-		WE
-		EA
-		F
-		C
-	- File paths for the textures need to exist and be openable in the right format
-	- Color format must be in R, G, B.
-		Each value 0-2555
-		no extra commas or other characters
-	MAP:
-	- Must exist
-	- needs to exist after the texture/color definition
-	- only needs to contain the valid characters
-		0, 1, N, S, E, W, ' '(space characters for padding)
-	- only one character in the map
-	- MUST be inclosed by walls
-	-
-*/
 
 static int	is_empty_line(char *line)
 {
@@ -76,17 +50,7 @@ static void	parse_file(t_game *game)
 	close(game->map->fd);
 	game->map->parsed_file = ft_split(file_content, '\n');
 	free(file_content);
-	
-
-	// int i = 0;
-	// while (game->map->parsed_file[i])
-	// {
-	// 	ft_printf("line: %d |\t %s\n", i, game->map->parsed_file[i]);
-	// 	i++;
-	// }
-	// printf("\n");
 }
-
 
 void	parser(t_game *game)
 {

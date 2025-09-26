@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 10:26:31 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/26 15:17:48 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/26 15:24:05 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	flood_fill(t_game *game, int y, int x, char **visited)
 	c = visited[y][x];
 	if (c == '1' || c == 'V')
 		return (1);
-	if (c == ' ' )
+	if (c == ' ')
 		return (0);
 	visited[y][x] = 'V';
 	if (!flood_fill(game, y - 1, x, visited))
@@ -56,8 +56,7 @@ static int	is_map_values(char **line, t_game *game)
 			find_player(game, line[i][j], i, j);
 			j++;
 		}
-		game->map->map_grid[i] = ft_strdup(line[i]);
-		game->map->flood_grid[i] = ft_strdup(line[i]);
+		assign_map_variable(game, line, i);
 		i++;
 	}
 	if ((game->map->found > 1) || (game->map->found <= 0))
@@ -79,7 +78,6 @@ void	normalize_map(t_game *game)
 		if (!new_line)
 			error_exit(MALOC_FAIL_MAP_NL, game);
 		fill_map(game, new_line, i);
-		ft_printf("%s\n", game->map->map_grid[i]);
 		i++;
 	}
 }
@@ -94,7 +92,8 @@ void	get_map(t_game *game)
 	if (!game->map->map_grid || !game->map->flood_grid)
 		error_exit(MALOC_FAIL_MAP_GRID, game);
 	is_map_values(game->map->parsed_file + 6, game);
-	if (!flood_fill(game, game->map->player_y, game->map->player_x, game->map->flood_grid))
+	if (!flood_fill(game, game->map->player_y, game->map->player_x,
+			game->map->flood_grid))
 		error_exit(MAP_NOT_CLOSED, game);
 	normalize_map(game);
 }

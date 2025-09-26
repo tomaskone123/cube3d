@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/26 14:43:49 by tomas            ###   ########.fr       */
+/*   Updated: 2025/09/26 15:22:33 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ int					array_size(char **array);
 void				get_max_width(t_game *game, char** map, int height);
 void				fill_map(t_game *game, char *new_line, int i);
 void				find_player(t_game *game, char value, int i, int j);
+void				assign_map_variable(t_game *game, char **line, int i);
+
 
 
 
