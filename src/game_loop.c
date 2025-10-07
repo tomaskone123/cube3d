@@ -6,19 +6,50 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:40:20 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/07 09:43:26 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/07 14:54:55 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
 
+void	move_player(t_game *game, mlx_key_data_t keydata)
+{
+	float	move_speed;
+	float	new_px;
+	float	new_py;
+
+	move_speed = 0.1f;
+	new_px = game->player->px;
+	new_py = game->player->py;
+	if (keydata.key == MLX_KEY_W)
+		new_py -= move_speed;
+	else if (keydata.key == MLX_KEY_S)
+		new_py += move_speed;
+	else if (keydata.key == MLX_KEY_A)
+		new_px -= move_speed;
+	else if (keydata.key == MLX_KEY_D)
+		new_px += move_speed;
+	// Check boundaries and walls
+	if (new_py >= 0 && new_py < game->map->height && new_px >= 0
+		&& new_px < game->map->width
+		&& game->map->map_grid[(int)new_py][(int)new_px] != '1')
+	{
+		game->player->px = new_px;
+		game->player->py = new_py;
+	}
+}
+
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	mlx_t	*mlx;
+	t_game	*game;
 
-	mlx = param;
+	game = param;
+	mlx = game->mlx;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(mlx);
+	else
+		move_player(game, keydata);
 }
 
 void	init_game_loop(t_game *game)
@@ -42,9 +73,7 @@ void	init_game_loop(t_game *game)
 	}
 }
 
-
-
-void	game_loop(void* param)
+void	game_loop(void *param)
 {
 	t_game	*game;
 
@@ -63,13 +92,12 @@ void	game_loop(void* param)
 		mlx_close_window(game->mlx);
 		error_exit(NEW_FRAME_FAIL, game);
 	}
-
 }
 
 void	run_game(t_game *game)
 {
 	init_game_loop(game);
 	mlx_loop_hook(game->mlx, &game_loop, game);
-	mlx_key_hook(game->mlx, key_hook, game->mlx);
+	mlx_key_hook(game->mlx, key_hook, game);
 	mlx_loop(game->mlx);
 }

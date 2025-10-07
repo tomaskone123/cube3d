@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/01 14:03:50 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/07 14:43:50 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@
 # define CUB ".cub"
 # define PNG ".png"
 
-# define WIDTH 800
-# define HEIGHT 600
+# define WIDTH 1200
+# define HEIGHT 1200
 # define TILE 32
+# define M_PI 3.14159265358979323846
 
 
 # define MALOC_FAIL_PARSE_FILE "Couldn't allocate memory for the 'file_content' variable"
@@ -91,6 +92,7 @@ typedef struct s_player
 	float			py;
 	float			dirx;
 	float			diry;
+	float			angle;
 }					t_player;
 
 typedef struct s_txt_array
