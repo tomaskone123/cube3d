@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:31:50 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 13:15:22 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/01 14:17:55 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int32_t	main(int argc, char *argv[])
 		error_exit(MALOC_FAIL_GAME, game);
 	argument_check(argv[1], argc, game);
 	parser(game);
+	run_game(game);
 	free_game(game);
 	return (EXIT_SUCCESS);
 }

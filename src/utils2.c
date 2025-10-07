@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 15:50:54 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/26 15:24:09 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/01 13:47:29 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,16 @@ void	assign_map_variable(t_game *game, char **line, int i)
 {
 	game->map->map_grid[i] = ft_strdup(line[i]);
 	game->map->flood_grid[i] = ft_strdup(line[i]);
+}
+
+void	get_player_dir(t_game *game)
+{
+	if (game->map->player_dir == 'E')
+		game->player->dirx = 1;
+	if (game->map->player_dir == 'N')
+		game->player->diry = -1;
+	if (game->map->player_dir == 'S')
+		game->player->diry = 1;
+	if (game->map->player_dir == 'W')
+		game->player->dirx = -1;
 }

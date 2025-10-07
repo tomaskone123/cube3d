@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:41:01 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 13:18:43 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/01 14:04:05 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int	argument_check(char *map_argument, int argc, t_game *game)
 	game->map = ft_calloc(1, sizeof(t_map));
 	if (!game->map)
 		error_exit(MALOC_FAIL_MAP, game);
+	game->player = ft_calloc(1, sizeof(t_player));
+	if (!game->player)
+		error_exit(MALOC_FAIL_PLAYER, game);
 	game->map->fd = open(map_argument, O_RDONLY);
 	return (0);
 }

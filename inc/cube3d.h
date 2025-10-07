@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/26 15:22:33 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/01 14:03:50 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@
 # define CUB ".cub"
 # define PNG ".png"
 
+# define WIDTH 800
+# define HEIGHT 600
+# define TILE 32
+
+
 # define MALOC_FAIL_PARSE_FILE "Couldn't allocate memory for the 'file_content' variable"
 # define MALOC_FAIL_GAME "Couldn't allocate memory for the 'game' struct"
 # define ARGUMENT_NUMBER_FAIL "The number of argluments needed is 1"
@@ -33,6 +38,7 @@
 # define EXTENTION_PNG_FAIL "The map file type is not .png"
 # define FAIL_OPEN_FILE "The map file failed to open"
 # define MALOC_FAIL_MAP "Couldn't allocate memory for the 'map' struct"
+# define MALOC_FAIL_PLAYER "Couldn't allocate memory for the 'player' struct"
 # define MISSING_VALUE "Value is missing in the map file"
 # define DUP_VALUE "There is a duplicate in the map file"
 # define MALOC_FAIL_TEXTURE "Couldn't allocate memory for the texture variable"
@@ -46,7 +52,7 @@
 # define MALOC_FAIL_MAP_GRID "Couldn't allocate memory for the 'map_grid' in get_map"
 # define MALOC_FAIL_VISITED "Couldn't allocate memory for the 'visited' in get_map"
 # define MAP_NOT_CLOSED "The map is not enclosed in walls"
-
+# define NEW_FRAME_FAIL "Failed to load the new frame"
 
 typedef struct s_map
 {
@@ -79,6 +85,14 @@ typedef struct s_map
 	uint32_t		floor_final;
 }					t_map;
 
+typedef struct s_player
+{
+	float			px;
+	float			py;
+	float			dirx;
+	float			diry;
+}					t_player;
+
 typedef struct s_txt_array
 {
 	char			*id;
@@ -87,12 +101,14 @@ typedef struct s_txt_array
 
 typedef struct s_game
 {
+	t_player		*player;
+	mlx_image_t		*frame;
 	mlx_t			*mlx;
 	t_map			*map;
 }					t_game;
 
 // ERROR HANDELING
-void				error_exit(char *error_message, t_game *game);
+void				error_exit(const char *error_message, t_game *game);
 
 // FREEING FUNCTION
 int					free_game(t_game *game);
@@ -104,20 +120,26 @@ int					argument_check(char *map_argument, int argc, t_game *game);
 void				check_duplicates(t_game *game);
 int					get_textures_and_colors(t_game *game);
 int					color_convert(char *color, t_game *game);
-void				get_map(t_game* game);
+void				get_map(t_game *game);
 
 // UTILS
 int					file_exists(char *file_path, char *extention, t_game *game);
 int					space_increment(char *string, int number);
 int					is_space(char value);
 int					array_size(char **array);
-void				get_max_width(t_game *game, char** map, int height);
+void				get_max_width(t_game *game, char **map, int height);
 void				fill_map(t_game *game, char *new_line, int i);
 void				find_player(t_game *game, char value, int i, int j);
 void				assign_map_variable(t_game *game, char **line, int i);
+void				get_player_dir(t_game *game);
+
+
+// TEST
+void	draw_map_2d(t_game *game);
 
 
 
-
+// GAME LOOP
+void				run_game(t_game *game);
 
 #endif
