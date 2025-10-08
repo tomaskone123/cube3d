@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/08 13:16:09 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/08 15:08:17 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../lib/libft/libft.h"
 # include <fcntl.h>
 # include <math.h>
+# include <stdbool.h>
 # include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -146,5 +147,8 @@ void				try_move(t_game *game, float dx, float dy);
 
 // GAME LOOP
 void				run_game(t_game *game);
+
+// RAYS
+void				cast_all_rays(t_game *game);
 
 #endif
