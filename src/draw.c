@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:55:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/08 10:58:01 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/08 13:09:33 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ void	draw_map_2d(t_game *game)
 	int	draw_x;
 	int	draw_y;
 
-	tile_size = 40;
+	tile_size = TILE;
 	// --- Draw map tiles ---
 	for (int y = 0; y < game->map->height; y++)
 	{
 		for (int x = 0; x < game->map->width; x++)
 		{
-			color = (game->map->map_grid[y][x] == '1') ? 0xFFFFFFFF : 0x000000FF;
+			color = (game->map->map_grid[y][x] == '1') ? game->map->ceiling_final : game->map->floor_final;
 			for (int i = 0; i < tile_size; i++)
 			{
 				for (int j = 0; j < tile_size; j++)
@@ -66,7 +66,7 @@ void	draw_map_2d(t_game *game)
 		}
 	}
 	// --- Draw player ---
-	player_size = 15;
+	player_size = PLAYER;
 	px = (int)(game->player->px * tile_size);
 	py = (int)(game->player->py * tile_size);
 	for (int i = -player_size / 2; i < player_size / 2; i++)
@@ -89,22 +89,22 @@ void	draw_map_2d(t_game *game)
 	}
 }
 
-void	rotate_player(t_player *player, mlx_key_data_t keydata)
+void	rotate_player(t_game *game)
 {
 	float	rot_spead;
 
-	rot_spead = 0.1f;
-	if (keydata.key == MLX_KEY_RIGHT)
-		player->angle += rot_spead;
-	else if (keydata.key == MLX_KEY_LEFT)
-		player->angle -= rot_spead;
-	// keep angle between 0 and 2π
-	if (player->angle < 0)
-		player->angle += 2 * M_PI;
-	else if (player->angle > 2 * M_PI)
-		player->angle -= 2 * M_PI;
-	player->dirx = cos(player->angle);
-	player->diry = sin(player->angle);
+	rot_spead = 0.15f;
+	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
+		game->player->angle += rot_spead;
+	else if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
+		game->player->angle -= rot_spead;
+	// keep angle between 0 and 2pi
+	if (game->player->angle < 0)
+		game->player->angle += 2 * M_PI;
+	else if (game->player->angle > 2 * M_PI)
+		game->player->angle -= 2 * M_PI;
+	game->player->dirx = cos(game->player->angle);
+	game->player->diry = sin(game->player->angle);
 }
 
 void	try_move(t_game *game, float dx, float dy)
