@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/08 13:09:52 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/08 13:16:09 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@
 # define WIDTH 1200
 # define HEIGHT 1200
 # define TILE 50
-# define PLAYER 5
+# define PLAYER 10
+# define PLAYER_SPEED 0.06f
+# define ROTATION_SPEED 0.1f
 # define M_PI 3.14159265358979323846
 
 # define MALOC_FAIL_PARSE_FILE "Couldn't allocate memory for the 'file_content' variable"

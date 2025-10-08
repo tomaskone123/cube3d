@@ -6,39 +6,11 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:40:20 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/08 13:02:11 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/08 14:45:20 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
-
-// void	move_player(t_game *game, mlx_key_data_t keydata)
-// {
-// 	float	move_speed;
-// 	float	new_px;
-// 	float	new_py;
-
-// 	move_speed = 0.1f;
-// 	new_px = game->player->px;
-// 	new_py = game->player->py;
-// 	if (keydata.key == MLX_KEY_W)
-// 		new_py -= move_speed;
-// 	else if (keydata.key == MLX_KEY_S)
-// 		new_py += move_speed;
-// 	else if (keydata.key == MLX_KEY_A)
-// 		new_px -= move_speed;
-// 	else if (keydata.key == MLX_KEY_D)
-// 		new_px += move_speed;
-// 	else if (keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_LEFT)
-// 		rotate_player(game->player, keydata);
-// 	if (new_py >= 0 && new_py < game->map->height && new_px >= 0
-// 		&& new_px < game->map->width
-// 		&& game->map->map_grid[(int)new_py][(int)new_px] != '1')
-// 	{
-// 		game->player->px = new_px;
-// 		game->player->py = new_py;
-// 	}
-// }
 
 void	move_player(t_game *game)
 {
@@ -48,11 +20,13 @@ void	move_player(t_game *game)
 
 	sidex = -game->player->diry;
 	sidey = game->player->dirx;
-	move_speed = 0.1f;
+	move_speed = PLAYER_SPEED;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-		try_move(game, game->player->dirx * move_speed, game->player->diry * move_speed);
+		try_move(game, game->player->dirx * move_speed, game->player->diry
+			* move_speed);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
-		try_move(game, -game->player->dirx * move_speed, -game->player->diry * move_speed);
+		try_move(game, -game->player->dirx * move_speed, -game->player->diry
+			* move_speed);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		try_move(game, sidex * move_speed, sidey * move_speed);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
@@ -98,7 +72,6 @@ void	game_loop(void *param)
 
 	game = (t_game *)param;
 	move_player(game);
-
 	if (game->frame)
 		mlx_delete_image(game->mlx, game->frame);
 	game->frame = mlx_new_image(game->mlx, WIDTH, HEIGHT);
@@ -108,6 +81,7 @@ void	game_loop(void *param)
 		error_exit(NEW_FRAME_FAIL, game);
 	}
 	draw_map_2d(game);
+	cast_all_rays(game);
 	if (mlx_image_to_window(game->mlx, game->frame, 0, 0) == -1)
 	{
 		mlx_close_window(game->mlx);
