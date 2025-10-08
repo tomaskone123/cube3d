@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/07 14:43:50 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/08 10:58:36 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # define HEIGHT 1200
 # define TILE 32
 # define M_PI 3.14159265358979323846
-
 
 # define MALOC_FAIL_PARSE_FILE "Couldn't allocate memory for the 'file_content' variable"
 # define MALOC_FAIL_GAME "Couldn't allocate memory for the 'game' struct"
@@ -135,11 +134,12 @@ void				find_player(t_game *game, char value, int i, int j);
 void				assign_map_variable(t_game *game, char **line, int i);
 void				get_player_dir(t_game *game);
 
-
 // TEST
-void	draw_map_2d(t_game *game);
+void				draw_map_2d(t_game *game);
 
-
+// MOVEMENT
+void				rotate_player(t_player *player, mlx_key_data_t keydata);
+void				try_move(t_game *game, float dx, float dy);
 
 // GAME LOOP
 void				run_game(t_game *game);

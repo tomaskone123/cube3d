@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:40:20 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/07 14:54:55 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/08 10:17:24 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	move_player(t_game *game, mlx_key_data_t keydata)
 		new_px -= move_speed;
 	else if (keydata.key == MLX_KEY_D)
 		new_px += move_speed;
-	// Check boundaries and walls
+	else if (keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_LEFT)
+		rotate_player(game->player, keydata);
 	if (new_py >= 0 && new_py < game->map->height && new_px >= 0
 		&& new_px < game->map->width
 		&& game->map->map_grid[(int)new_py][(int)new_px] != '1')
@@ -78,6 +79,7 @@ void	game_loop(void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
+	
 	if (game->frame)
 		mlx_delete_image(game->mlx, game->frame);
 	game->frame = mlx_new_image(game->mlx, WIDTH, HEIGHT);
