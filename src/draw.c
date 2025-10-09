@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:55:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/09 13:04:49 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/09 14:34:33 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,29 @@
 // 	}
 // }
 
-// void	draw_map_3d(t_game* game)
-// {
+void	draw_background(t_game *game)
+{
+	int	y;
+	int	x;
 
-// }
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			if (y < HEIGHT / 2)
+				mlx_put_pixel(game->frame, x, y, game->map->ceiling_final);
+			else
+				mlx_put_pixel(game->frame, x, y, game->map->floor_final);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	draw_map_3d(t_game *game)
+{
+	draw_background(game);
+	cast_all_rays(game);
+}

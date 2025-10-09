@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/09 13:02:00 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/09 14:44:36 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@
 # define CUB ".cub"
 # define PNG ".png"
 
-# define WIDTH 1200
+# define WIDTH 1800
 # define HEIGHT 1200
 # define TILE 50
 # define PLAYER 10
 # define PLAYER_SPEED 0.06f
-# define ROTATION_SPEED 0.1f
+# define ROTATION_SPEED 0.05f
+# define PIXELATION 0.01f
 # define M_PI 3.14159265358979323846
 
 # define MALOC_FAIL_RAY_STR "Couldn't allocate memory for the 'ray' struct"
@@ -166,5 +167,9 @@ void				run_game(t_game *game);
 
 // RAYS
 void				cast_all_rays(t_game *game);
+
+// DRAW
+void				draw_map_3d(t_game *game);
+
 
 #endif
