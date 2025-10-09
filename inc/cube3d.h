@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/08 15:08:17 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/09 13:02:00 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define ROTATION_SPEED 0.1f
 # define M_PI 3.14159265358979323846
 
+# define MALOC_FAIL_RAY_STR "Couldn't allocate memory for the 'ray' struct"
 # define MALOC_FAIL_PARSE_FILE "Couldn't allocate memory for the 'file_content' variable"
 # define MALOC_FAIL_GAME "Couldn't allocate memory for the 'game' struct"
 # define ARGUMENT_NUMBER_FAIL "The number of argluments needed is 1"
@@ -104,12 +105,25 @@ typedef struct s_txt_array
 	char			**texture;
 }					t_txt_array;
 
+typedef struct s_ray
+{
+	float			x;
+	float			y;
+	float			step;
+	bool			hit;
+	float			distance;
+	int				wall_height;
+	int				start;
+	int				end;
+}					t_ray;
+
 typedef struct s_game
 {
 	t_player		*player;
 	mlx_image_t		*frame;
 	mlx_t			*mlx;
 	t_map			*map;
+	t_ray			*ray;
 }					t_game;
 
 // ERROR HANDELING
@@ -137,6 +151,7 @@ void				fill_map(t_game *game, char *new_line, int i);
 void				find_player(t_game *game, char value, int i, int j);
 void				assign_map_variable(t_game *game, char **line, int i);
 void				get_player_dir(t_game *game);
+void				get_start_end(t_game *game, float ray_angle);
 
 // TEST
 void				draw_map_2d(t_game *game);
@@ -144,6 +159,7 @@ void				draw_map_2d(t_game *game);
 // MOVEMENT
 void				rotate_player(t_game *game);
 void				try_move(t_game *game, float dx, float dy);
+void				move_player(t_game *game);
 
 // GAME LOOP
 void				run_game(t_game *game);

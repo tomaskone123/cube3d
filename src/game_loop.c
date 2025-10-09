@@ -6,33 +6,11 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:40:20 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/08 14:45:20 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/09 13:04:55 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
-
-void	move_player(t_game *game)
-{
-	float	move_speed;
-	float	sidex;
-	float	sidey;
-
-	sidex = -game->player->diry;
-	sidey = game->player->dirx;
-	move_speed = PLAYER_SPEED;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-		try_move(game, game->player->dirx * move_speed, game->player->diry
-			* move_speed);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
-		try_move(game, -game->player->dirx * move_speed, -game->player->diry
-			* move_speed);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
-		try_move(game, sidex * move_speed, sidey * move_speed);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
-		try_move(game, -sidex * move_speed, -sidey * move_speed);
-	rotate_player(game);
-}
 
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
@@ -80,8 +58,9 @@ void	game_loop(void *param)
 		mlx_close_window(game->mlx);
 		error_exit(NEW_FRAME_FAIL, game);
 	}
-	draw_map_2d(game);
-	cast_all_rays(game);
+	// draw_map_3d(game);
+	// draw_map_2d(game); // TESTING
+	cast_all_rays(game); // TESTING
 	if (mlx_image_to_window(game->mlx, game->frame, 0, 0) == -1)
 	{
 		mlx_close_window(game->mlx);

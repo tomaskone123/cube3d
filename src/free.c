@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:43:08 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/01 13:35:45 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/09 12:45:59 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	free_game(t_game *game)
 		free_map(game->map);
 	if (game->player)
 		free(game->player);
+	if (game->ray)
+		free(game->ray);
 	if (game->frame && game->mlx)
 		mlx_delete_image(game->mlx, game->frame);
 	if (game->mlx)
