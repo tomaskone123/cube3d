@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:45:54 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/09 14:41:17 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/13 16:22:01 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	cast_ray(t_game *game, float ray_angle, int column)
 
 	j = 0;
 	game->ray->hit = false;
+	// game->ray->step = 1.0f / TILE;
 	game->ray->step = PIXELATION;
 	game->ray->x = game->player->px;
 	game->ray->y = game->player->py;
@@ -79,7 +80,7 @@ void	cast_all_rays(t_game *game)
 	start_angle = game->player->angle - fov / 2;
 	angle_step = fov / num_rays;
 	i = 0;
-	while (i < num_rays)
+	while (i < WIDTH)
 	{
 		cast_ray(game, start_angle + i * angle_step, i);
 		i++;

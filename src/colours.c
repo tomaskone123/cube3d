@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 12:12:49 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/24 19:57:51 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/10 16:43:34 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int	split_clrs(char *color, t_game *game)
 		error_exit(CLR_NOT_ENOUGH, game);
 	}
 	free_array(clr_array);
+	// NEEDS TO GET FIXED THE COLORS DON'T WORK 
 	return ((uint32_t)((0xFF << 24) | (r << 16) | (g << 8) | b));
 }
 

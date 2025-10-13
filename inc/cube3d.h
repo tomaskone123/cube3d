@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/10 16:00:09 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/13 16:15:08 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define PLAYER 10
 # define PLAYER_SPEED 0.06f
 # define ROTATION_SPEED 0.05f
-# define PIXELATION 0.01f
+# define PIXELATION 0.07f
 # define M_PI 3.14159265358979323846
 
 # define MALOC_FAIL_RAY_STR "Couldn't allocate memory for the 'ray' struct"

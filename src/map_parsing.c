@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 10:26:31 by tomas             #+#    #+#             */
-/*   Updated: 2025/09/26 15:24:05 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/13 16:08:17 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,17 @@ void	get_map(t_game *game)
 			game->map->flood_grid))
 		error_exit(MAP_NOT_CLOSED, game);
 	normalize_map(game);
+	// int	i = 0;
+	// while (game->map->map_grid[i])
+	// {
+	// 	int j = 0;
+	// 	while (game->map->map_grid[i][j])
+	// 	{
+	// 		// printf("", game->map->map_grid[i][j]);
+	// 		putchar(game->map->map_grid[i][j]);
+	// 		j++;
+	// 	}
+	// 	printf("\n");
+	// 	i++;
+	// }
 }
