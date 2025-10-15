@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/15 15:02:13 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/15 15:53:57 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ typedef struct s_ray
 	float			distance;
 	int				wall_height;
 	char			wall_dir;
+	float			wall_x;
+	int				tex_x;
 	int				start;
 	int				end;
 }					t_ray;
@@ -154,6 +156,7 @@ void				find_player(t_game *game, char value, int i, int j);
 void				assign_map_variable(t_game *game, char **line, int i);
 void				get_player_dir(t_game *game);
 void				get_start_end(t_game *game, float ray_angle);
+mlx_texture_t		*get_texture(t_game *game);
 
 // TEST
 void				draw_map_2d(t_game *game);
@@ -171,6 +174,5 @@ void				cast_all_rays(t_game *game);
 
 // DRAW
 void				draw_map_3d(t_game *game);
-
 
 #endif

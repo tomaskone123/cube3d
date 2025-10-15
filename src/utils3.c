@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:52:26 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/09 13:20:18 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/15 15:47:54 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,21 @@ void	get_start_end(t_game *game, float ray_angle)
 	game->ray->wall_height = HEIGHT / game->ray->distance;
 	game->ray->start = (HEIGHT - game->ray->wall_height) / 2;
 	game->ray->end = (HEIGHT + game->ray->wall_height) / 2;
-	// keep values within boundries after deviding 
+	// keep values within boundries after deviding
 	if (game->ray->start < 0)
 		game->ray->start = 0;
 	if (game->ray->end >= HEIGHT)
 		game->ray->end = HEIGHT - 1;
+}
+
+mlx_texture_t	*get_texture(t_game *game)
+{
+	if (game->ray->wall_dir == 'S')
+		return (game->map->so_mlx_txt);
+	else if (game->ray->wall_dir == 'N')
+		return (game->map->no_mlx_txt);
+	else if (game->ray->wall_dir == 'W')
+		return (game->map->we_mlx_txt);
+	else
+		return (game->map->ea_mlx_txt);
 }

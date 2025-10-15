@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:45:54 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/15 15:14:29 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/15 15:55:27 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,29 @@ char	get_wall_dir(t_ray *ray, float ray_angle)
 	return ('S');
 }
 
+uint32_t	get_texture_color(mlx_texture_t *texture, int x, int y)
+{
+	int		index;
+	uint8_t	*p;
+
+	index = (y * texture->width + x) * 4;
+	p = &texture->pixels[index];
+	return (p[0] << 24 | p[1] << 16 | p[2] << 8 | p[3]);
+}
+
 void	cast_ray(t_game *game, float ray_angle, int column)
 {
-	int	mapx;
-	int	mapy;
-	int	j;
+	mlx_texture_t	*texture;
+	int				mapx;
+	int				mapy;
+	float			wall_height;
+	float			step;
+	float			tex_pos;
+	int				tex_y;
+	uint32_t		color;
 
-	j = 0;
+	// int				j;
+	// j = 0;
 	game->ray->hit = false;
 	game->ray->step = 1.0f / TILE;
 	// game->ray->step = PIXELATION;
@@ -89,9 +105,26 @@ void	cast_ray(t_game *game, float ray_angle, int column)
 		}
 	}
 	get_start_end(game, ray_angle);
-	j = game->ray->start;
-	while (j < game->ray->end)
-		mlx_put_pixel(game->frame, column, j++, 0xFFFFFF);
+	texture = get_texture(game);
+	if (game->ray->wall_dir == 'E' || game->ray->wall_dir == 'W')
+		game->ray->wall_x = game->ray->y - floorf(game->ray->y);
+	else
+		game->ray->wall_x = game->ray->x - floorf(game->ray->x);
+	game->ray->tex_x = (int)(game->ray->wall_x * texture->width);
+	wall_height = game->ray->end - game->ray->start;
+	step = (float)texture->height / wall_height;
+	tex_pos = 0.0f;
+	// 4️⃣ Draw textured wall slice
+	for (int j = game->ray->start; j < game->ray->end; j++)
+	{
+		tex_y = (int)tex_pos;
+		color = get_texture_color(texture, game->ray->tex_x, tex_y);
+		mlx_put_pixel(game->frame, column, j, color);
+		tex_pos += step;
+	}
+	// j = game->ray->start;
+	// while (j < game->ray->end)
+	// 	mlx_put_pixel(game->frame, column, j++, 0xFFFFFF);
 }
 
 void	cast_all_rays(t_game *game)
