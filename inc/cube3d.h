@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/13 16:15:08 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/15 15:02:13 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct s_ray
 	bool			hit;
 	float			distance;
 	int				wall_height;
+	char			wall_dir;
 	int				start;
 	int				end;
 }					t_ray;

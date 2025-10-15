@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:45:54 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/13 16:22:01 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/15 15:14:29 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,30 @@
 // 	}
 // }
 
+char	get_wall_dir(t_ray *ray, float ray_angle)
+{
+	float	dist_to_vert;
+	float	dist_to_horizont;
+
+	dist_to_vert = fabsf(ray->x - floorf(ray->x));
+	dist_to_horizont = fabsf(ray->y - floorf(ray->y));
+	if (dist_to_vert < dist_to_horizont)
+	{
+		if (cos(ray_angle) > 0)
+			return ('E');
+		else
+			return ('W');
+	}
+	else
+	{
+		if (sin(ray_angle) > 0)
+			return ('S');
+		else
+			return ('N');
+	}
+	return ('S');
+}
+
 void	cast_ray(t_game *game, float ray_angle, int column)
 {
 	int	mapx;
@@ -48,8 +72,8 @@ void	cast_ray(t_game *game, float ray_angle, int column)
 
 	j = 0;
 	game->ray->hit = false;
-	// game->ray->step = 1.0f / TILE;
-	game->ray->step = PIXELATION;
+	game->ray->step = 1.0f / TILE;
+	// game->ray->step = PIXELATION;
 	game->ray->x = game->player->px;
 	game->ray->y = game->player->py;
 	while (!game->ray->hit)
@@ -59,7 +83,10 @@ void	cast_ray(t_game *game, float ray_angle, int column)
 		mapx = (int)game->ray->x;
 		mapy = (int)game->ray->y;
 		if (game->map->map_grid[mapy][mapx] == '1')
+		{
 			game->ray->hit = true;
+			game->ray->wall_dir = get_wall_dir(game->ray, ray_angle);
+		}
 	}
 	get_start_end(game, ray_angle);
 	j = game->ray->start;
