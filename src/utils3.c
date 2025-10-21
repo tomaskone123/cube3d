@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:52:26 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/15 15:47:54 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/21 14:20:40 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	get_start_end(t_game *game, float ray_angle)
 	if (game->ray->end >= HEIGHT)
 		game->ray->end = HEIGHT - 1;
 }
+
 
 mlx_texture_t	*get_texture(t_game *game)
 {

@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/15 15:53:57 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/21 14:35:19 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define PLAYER 10
 # define PLAYER_SPEED 0.06f
 # define ROTATION_SPEED 0.05f
-# define PIXELATION 0.07f
+# define PIXELATION 0.04f
 # define M_PI 3.14159265358979323846
 
 # define MALOC_FAIL_RAY_STR "Couldn't allocate memory for the 'ray' struct"
@@ -59,6 +59,20 @@
 # define MALOC_FAIL_VISITED "Couldn't allocate memory for the 'visited' in get_map"
 # define MAP_NOT_CLOSED "The map is not enclosed in walls"
 # define NEW_FRAME_FAIL "Failed to load the new frame"
+
+typedef struct s_dda
+{
+    float   ray_dir_x;
+    float   ray_dir_y;
+    int     map_x;
+    int     map_y;
+    float   delta_dist_x;
+    float   delta_dist_y;
+    float   side_dist_x;
+    float   side_dist_y;
+    int     step_x;
+    int     step_y;
+}   t_dda;
 
 typedef struct s_map
 {
@@ -112,6 +126,7 @@ typedef struct s_ray
 	float			y;
 	float			step;
 	bool			hit;
+	bool			hit_vertical;
 	float			distance;
 	int				wall_height;
 	char			wall_dir;
