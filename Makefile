@@ -1,4 +1,4 @@
-NAME		:= cube3d
+NAME		:= cube3D
 CFLAGS		:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLX		:= ./lib/MLX42
 LIBFT		:= ./lib/libft

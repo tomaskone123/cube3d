@@ -268,20 +268,24 @@ void set_wall_direction(t_game *game, t_dda *dda)
 /* -------------------------------------------------------------------------- */
 void calc_texture_x(t_game *game, t_dda *dda, float perp_dist, mlx_texture_t *texture)
 {
-    if (game->ray->hit_vertical)
-        game->ray->wall_x = game->player->py + perp_dist * dda->ray_dir_y;
-    else
-        game->ray->wall_x = game->player->px + perp_dist * dda->ray_dir_x;
+    // Calculate exact hit point
+    float hit_x = game->player->px + perp_dist * dda->ray_dir_x;
+    float hit_y = game->player->py + perp_dist * dda->ray_dir_y;
 
-    game->ray->wall_x -= floor(game->ray->wall_x);
+    // Get fractional part based on wall orientation
+    if (game->ray->hit_vertical)
+        game->ray->wall_x = hit_y - floor(hit_y);  // Use Y coordinate
+    else
+        game->ray->wall_x = hit_x - floor(hit_x);  // Use X coordinate
+
     game->ray->tex_x = (int)(game->ray->wall_x * texture->width);
 
-    // Flip texture if needed for correct orientation
-    if ((!game->ray->hit_vertical && dda->ray_dir_x > 0) ||
-        (game->ray->hit_vertical && dda->ray_dir_y < 0))
-        game->ray->tex_x = texture->width - game->ray->tex_x - 1;
+    // Clamp just in case
+    if (game->ray->tex_x < 0)
+        game->ray->tex_x = 0;
+    if (game->ray->tex_x >= (int)texture->width)
+        game->ray->tex_x = texture->width - 1;
 }
-
 
 /* -------------------------------------------------------------------------- */
 /* TEXTURE SAMPLING */
@@ -359,6 +363,11 @@ void cast_ray(t_game *game, float ray_angle, int column)
 
     // 7. Get appropriate texture
     texture = get_texture(game);
+	// printf("N: %p, S: %p, E: %p, W: %p\n",
+    // game->map->no_mlx_txt,
+    // game->map->so_mlx_txt,
+    // game->map->ea_mlx_txt,
+    // game->map->we_mlx_txt);
 
     // 8. Calculate texture X coordinate
     calc_texture_x(game, &dda, perp_dist, texture);
