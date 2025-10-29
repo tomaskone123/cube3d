@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:52:26 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/21 14:20:40 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/29 09:32:15 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,14 @@ mlx_texture_t	*get_texture(t_game *game)
 		return (game->map->we_mlx_txt);
 	else
 		return (game->map->ea_mlx_txt);
+}
+
+void	init_dda(t_game *game, float ray_angle, t_dda *dda)
+{
+	dda->ray_dir_x = cos(ray_angle);
+	dda->ray_dir_y = sin(ray_angle);
+	dda->map_x = (int)game->player->px;
+	dda->map_y = (int)game->player->py;
+	dda->delta_dist_x = fabs(1 / dda->ray_dir_x);
+	dda->delta_dist_y = fabs(1 / dda->ray_dir_y);
 }

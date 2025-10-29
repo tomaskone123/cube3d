@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 15:50:54 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/07 14:50:08 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/29 09:21:04 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	assign_map_variable(t_game *game, char **line, int i)
 
 void	get_player_dir(t_game *game)
 {
-	if (game->map->player_dir == 'N')
+	if (game->map->player_dir == 'S')
 		game->player->angle = M_PI / 2;
-	else if (game->map->player_dir == 'S')
+	else if (game->map->player_dir == 'N')
 		game->player->angle = 3 * M_PI / 2;
 	else if (game->map->player_dir == 'E')
 		game->player->angle = 0;

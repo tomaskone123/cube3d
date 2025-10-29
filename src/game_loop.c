@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:40:20 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/09 14:26:58 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/29 09:23:20 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 
 void	init_game_loop(t_game *game)
 {
-	game->player->px = (float)game->map->player_x;
-	game->player->py = (float)game->map->player_y;
+	game->player->px = (float)game->map->player_x + 0.5;
+	game->player->py = (float)game->map->player_y + 0.5;
+
+	printf("px:%f, py:%f", game->player->px, game->player->py);
 	get_player_dir(game);
 	game->mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
 	if (!game->mlx)

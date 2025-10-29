@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/21 14:35:19 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/29 09:37:39 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,9 +172,17 @@ void				assign_map_variable(t_game *game, char **line, int i);
 void				get_player_dir(t_game *game);
 void				get_start_end(t_game *game, float ray_angle);
 mlx_texture_t		*get_texture(t_game *game);
+void				init_dda(t_game *game, float ray_angle, t_dda *dda);
 
-// TEST
-void				draw_map_2d(t_game *game);
+// RAYS_UTILS
+void	set_wall_direction(t_game *game, t_dda *dda);
+void	calc_wall_bounds(t_game *game, float perp_dist);
+float	calc_perp_distance(t_game *game, t_dda *dda);
+void	perform_dda(t_game *game, t_dda *dda);
+void	calc_step_and_side_dist(t_game *game, t_dda *dda);
+
+// // TEST
+// void				draw_map_2d(t_game *game);
 
 // MOVEMENT
 void				rotate_player(t_game *game);
