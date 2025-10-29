@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 09:33:29 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/29 09:38:42 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/29 11:01:37 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,17 @@ void	calc_wall_bounds(t_game *game, float perp_dist)
 void	set_wall_direction(t_game *game, t_dda *dda)
 {
 	if (game->ray->hit_vertical)
-		game->ray->wall_dir = (dda->ray_dir_x > 0) ? 'E' : 'W';
+	{
+		if (dda->ray_dir_x > 0)
+			game->ray->wall_dir = 'E';
+		else
+			game->ray->wall_dir = 'W';
+	}
 	else
-		game->ray->wall_dir = (dda->ray_dir_y > 0) ? 'S' : 'N';
+	{
+		if (dda->ray_dir_y > 0)
+			game->ray->wall_dir = 'S';
+		else
+			game->ray->wall_dir = 'N';
+	}
 }

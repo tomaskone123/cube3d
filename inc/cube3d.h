@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/29 09:37:39 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/29 11:07:55 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ typedef struct s_ray
 
 typedef struct s_game
 {
+	int				j;
 	t_player		*player;
 	mlx_image_t		*frame;
 	mlx_t			*mlx;

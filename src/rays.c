@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 09:28:57 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/29 09:42:53 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/29 11:09:27 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,18 @@ void	draw_wall_column(t_game *game, mlx_texture_t *texture, int column,
 	wall_height = (int)(HEIGHT / perp_dist);
 	step = (float)texture->height / wall_height;
 	tex_pos = (game->ray->start - (-wall_height / 2 + HEIGHT / 2)) * step;
-	for (int j = game->ray->start; j < game->ray->end; j++)
+	game->j = game->ray->start;
+	while (game->j < game->ray->end)
 	{
-		if (j >= 0 && j < HEIGHT)
+		if (game->j >= 0 && game->j < HEIGHT)
 		{
 			tex_y = ((int)tex_pos % texture->height + texture->height)
 				% texture->height;
 			tex_pos += step;
 			color = get_texture_color(texture, game->ray->tex_x, tex_y);
-			mlx_put_pixel(game->frame, column, j, color);
+			mlx_put_pixel(game->frame, column, game->j, color);
 		}
+		game->j++;
 	}
 }
 
