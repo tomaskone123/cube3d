@@ -1,8 +1,8 @@
 SO /home/tomas/school/cube3d/textures/brick_wall.png
-NO /home/tomas/school/cube3d/textures/brick_wall.png
-WE /home/tomas/school/cube3d/textures/brick_wall.png
-EA /home/tomas/school/cube3d/textures/brick_wall.png
-C         225,30,0
+NO /home/tomas/school/cube3d/textures/9e8e240693123e6-4116788467.png
+WE /home/tomas/school/cube3d/textures/textured-stone-wall-png-2766135091.png
+EA /home/tomas/school/cube3d/textures/transparent-hole-in-brick-wall-png-1829429816.png
+C         0,0,139
 
 
 
@@ -12,7 +12,7 @@ C         225,30,0
 
 
 
-F         220,100,60
+F         128,128,128
 
 
 

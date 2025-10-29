@@ -314,24 +314,27 @@ uint32_t get_texture_color(mlx_texture_t *texture, int x, int y)
 /* -------------------------------------------------------------------------- */
 void draw_wall_column(t_game *game, mlx_texture_t *texture, int column, float perp_dist)
 {
-    float step;
-    float tex_pos;
-    int tex_y;
-    uint32_t color;
-    int wall_height;
+    if (perp_dist <= 0.0001f)
+        perp_dist = 0.0001f;
 
-    wall_height = (int)(HEIGHT / perp_dist);
-    step = (float)texture->height / wall_height;
-    tex_pos = (game->ray->start - HEIGHT / 2 + wall_height / 2) * step;
+    int wall_height = (int)(HEIGHT / perp_dist);
+    float step = (float)texture->height / wall_height;
+
+    float tex_pos = (game->ray->start - (-wall_height / 2 + HEIGHT / 2)) * step;
 
     for (int j = game->ray->start; j < game->ray->end; j++)
     {
-        tex_y = (int)tex_pos & (texture->height - 1);
-        tex_pos += step;
-        color = get_texture_color(texture, game->ray->tex_x, tex_y);
-        mlx_put_pixel(game->frame, column, j, color);
+        if (j >= 0 && j < HEIGHT)
+        {
+            int tex_y = ((int)tex_pos % texture->height + texture->height) % texture->height;
+            tex_pos += step;
+
+            uint32_t color = get_texture_color(texture, game->ray->tex_x, tex_y);
+            mlx_put_pixel(game->frame, column, j, color);
+        }
     }
 }
+
 
 
 /* -------------------------------------------------------------------------- */
@@ -363,11 +366,6 @@ void cast_ray(t_game *game, float ray_angle, int column)
 
     // 7. Get appropriate texture
     texture = get_texture(game);
-	// printf("N: %p, S: %p, E: %p, W: %p\n",
-    // game->map->no_mlx_txt,
-    // game->map->so_mlx_txt,
-    // game->map->ea_mlx_txt,
-    // game->map->we_mlx_txt);
 
     // 8. Calculate texture X coordinate
     calc_texture_x(game, &dda, perp_dist, texture);
