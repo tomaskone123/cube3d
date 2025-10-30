@@ -5,8 +5,27 @@ LIBFT		:= ./lib/libft
 
 HEADERS		:= -I ./include -I $(LIBMLX)/include
 LIBS		:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT)/libft.a
-SRCS		:= $(shell find ./src -iname "*.c")
+SRCS := \
+		./src/arg_checker.c \
+		./src/check_duplicates.c \
+		./src/colours.c \
+		./src/draw.c \
+		./src/error.c \
+		./src/free.c \
+		./src/game_loop.c \
+		./src/main.c \
+		./src/map_parsing.c \
+		./src/movement.c \
+		./src/parsing.c \
+		./src/rays.c \
+		./src/textures.c \
+		./src/utils.c \
+		./src/utils2.c \
+		./src/utils3.c \
+		./src/utils_rays.c
+
 OBJS		:= ${SRCS:.c=.o}
+
 
 
 all: libmlx libft $(NAME)

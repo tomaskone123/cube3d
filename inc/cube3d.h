@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/29 11:07:55 by tomas            ###   ########.fr       */
+/*   Updated: 2025/10/30 10:27:36 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define TILE 50
 # define PLAYER 10
 # define PLAYER_SPEED 0.06f
-# define ROTATION_SPEED 0.05f
+# define ROTATION_SPEED 0.1f
 # define PIXELATION 0.04f
 # define M_PI 3.14159265358979323846
 
