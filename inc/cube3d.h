@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/11/04 09:47:32 by tomas            ###   ########.fr       */
+/*   Updated: 2025/11/18 17:59:37 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define M_PI 3.14159265358979323846
 
 # define MALOC_FAIL_RAY_STR "Couldn't allocate memory for the 'ray' struct"
-# define MALOC_FAIL_PARSE_FILE "Couldn't allocate memory for the 'file_content' variable"
+# define MALOC_FAIL_PARSE_FILE "Couldn't allocate memory for the 'file_content'"
 # define MALOC_FAIL_GAME "Couldn't allocate memory for the 'game' struct"
 # define ARGUMENT_NUMBER_FAIL "The number of argluments needed is 1"
 # define EXTENTION_CUB_FAIL "The map file type is not .cub"
@@ -51,12 +51,12 @@
 # define MALOC_FAIL_COLOUR "Couldn't allocate memory for the clour variable"
 # define TXT_LOAD_FAIL "One of the textures failed to load"
 # define CLR_WRONG_NUMBER "The color is not number"
-# define CLR_NOT_ENOUGH "Wrong format of color\n(Needs to be 0-255 as R,G,B) :^)"
+# define CLR_NOT_ENOUGH "Wrong format of color"
 # define MAP_VALUES_WRONG "Wrong values in the map"
 # define PLAYER_COUNT "Wrong amount of players"
-# define MALOC_FAIL_MAP_NL "Couldn't allocate memory for the 'new_line' in normalize_map"
-# define MALOC_FAIL_MAP_GRID "Couldn't allocate memory for the 'map_grid' in get_map"
-# define MALOC_FAIL_VISITED "Couldn't allocate memory for the 'visited' in get_map"
+# define MALOC_FAIL_MAP_NL "Couldn't allocate memory in normalize_map"
+# define MALOC_FAIL_MAP_GRID "Couldn't allocate memory for the 'map_grid'"
+# define MALOC_FAIL_VISITED "Couldn't allocate memory for the 'visited'"
 # define MAP_NOT_CLOSED "The map is not enclosed in walls"
 # define NEW_FRAME_FAIL "Failed to load the new frame"
 
