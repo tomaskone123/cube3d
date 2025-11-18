@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/10/30 10:27:36 by tomas            ###   ########.fr       */
+/*   Updated: 2025/11/04 09:47:32 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,17 @@
 
 typedef struct s_dda
 {
-    float   ray_dir_x;
-    float   ray_dir_y;
-    int     map_x;
-    int     map_y;
-    float   delta_dist_x;
-    float   delta_dist_y;
-    float   side_dist_x;
-    float   side_dist_y;
-    int     step_x;
-    int     step_y;
-}   t_dda;
+	float			ray_dir_x;
+	float			ray_dir_y;
+	int				map_x;
+	int				map_y;
+	float			delta_dist_x;
+	float			delta_dist_y;
+	float			side_dist_x;
+	float			side_dist_y;
+	int				step_x;
+	int				step_y;
+}					t_dda;
 
 typedef struct s_map
 {
@@ -176,11 +176,11 @@ mlx_texture_t		*get_texture(t_game *game);
 void				init_dda(t_game *game, float ray_angle, t_dda *dda);
 
 // RAYS_UTILS
-void	set_wall_direction(t_game *game, t_dda *dda);
-void	calc_wall_bounds(t_game *game, float perp_dist);
-float	calc_perp_distance(t_game *game, t_dda *dda);
-void	perform_dda(t_game *game, t_dda *dda);
-void	calc_step_and_side_dist(t_game *game, t_dda *dda);
+void				set_wall_direction(t_game *game, t_dda *dda);
+void				calc_wall_bounds(t_game *game, float perp_dist);
+float				calc_perp_distance(t_game *game, t_dda *dda);
+void				perform_dda(t_game *game, t_dda *dda);
+void				calc_step_and_side_dist(t_game *game, t_dda *dda);
 
 // // TEST
 // void				draw_map_2d(t_game *game);
