@@ -1,7 +1,7 @@
-SO ./textures/brick_wall.png
 NO ./textures/9e8e240693123e6-4116788467.png
-WE ./textures/textured-stone-wall-png-2766135091.png
 EA ./textures/transparent-hole-in-brick-wall-png-1829429816.png
+SO ./textures/brick_wall.png
+WE ./textures/textured-stone-wall-png-2766135091.png
 C         255,150,40
 F         0,0,0
 
