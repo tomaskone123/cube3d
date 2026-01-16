@@ -15,6 +15,7 @@ SRCS := \
 		./src/game_loop.c \
 		./src/main.c \
 		./src/map_parsing.c \
+		./src/map_parsing2.c \
 		./src/movement.c \
 		./src/parsing.c \
 		./src/rays.c \

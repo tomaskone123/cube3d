@@ -3,38 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkonecny <tkonecny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skuik <skuik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 10:26:31 by tomas             #+#    #+#             */
-/*   Updated: 2026/01/16 14:45:38 by tkonecny         ###   ########.fr       */
+/*   Updated: 2026/01/16 15:28:16 by skuik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
-
-int	flood_fill(t_game *game, int y, int x, char **visited)
-{
-	char	c;
-
-	if (y < 0 || y >= game->map->height || x < 0
-		|| x >= (int)ft_strlen(visited[y]))
-		return (0);
-	c = visited[y][x];
-	if (c == '1' || c == 'V')
-		return (1);
-	if (c == ' ')
-		return (0);
-	visited[y][x] = 'V';
-	if (!flood_fill(game, y - 1, x, visited))
-		return (0);
-	if (!flood_fill(game, y + 1, x, visited))
-		return (0);
-	if (!flood_fill(game, y, x - 1, visited))
-		return (0);
-	if (!flood_fill(game, y, x + 1, visited))
-		return (0);
-	return (1);
-}
 
 static int	is_map_values(char **line, t_game *game)
 {

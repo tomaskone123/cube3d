@@ -6,7 +6,7 @@
 /*   By: skuik <skuik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2026/01/16 13:56:20 by skuik            ###   ########.fr       */
+/*   Updated: 2026/01/16 15:30:11 by skuik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,19 @@ typedef struct s_game
 	t_ray			*ray;
 }					t_game;
 
+typedef struct s_point
+{
+	int	y;
+	int	x;
+}	t_point;
+
+typedef struct s_flood_stack
+{
+	t_point	*stack;
+	int		top;
+	int		capacity;
+}	t_flood_stack;
+
 // ERROR HANDELING
 void				error_exit(const char *error_message, t_game *game);
 
@@ -160,6 +173,7 @@ void				check_duplicates(t_game *game);
 int					get_textures_and_colors(t_game *game);
 int					color_convert(char *color, t_game *game);
 void				get_map(t_game *game);
+int					flood_fill(t_game *game, int y, int x, char **visited);
 
 // UTILS
 int					file_exists(char *file_path, char *extention, t_game *game);
