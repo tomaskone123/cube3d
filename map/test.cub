@@ -1,7 +1,7 @@
-SO /home/tomas/school/cube3d/textures/9e8e240693123e6-4116788467.png
-NO /home/tomas/school/cube3d/textures/blue.png
-WE /home/tomas/school/cube3d/textures/blue.png
-EA /home/tomas/school/cube3d/textures/blue.png
+SO ./textures/9e8e240693123e6-4116788467.png
+NO ./textures/blue.png
+WE ./textures/blue.png
+EA ./textures/blue.png
 C         0,0,139
 
 

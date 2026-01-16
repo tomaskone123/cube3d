@@ -1,7 +1,7 @@
 SO ./textures/brick_wall.png
-NO /home/tomas/school/cube3d/textures/brick_wall.png
-WE /home/tomas/school/cube3d/textures/brick_wall.png
-EA /home/tomas/school/cube3d/textures/brick_wall.png
+NO ./textures/brick_wall.png
+WE ./textures/brick_wall.png
+EA ./textures/brick_wall.png
 C         255,150,40
 F         0,0,0
 

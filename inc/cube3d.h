@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: skuik <skuik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 15:34:12 by tomas             #+#    #+#             */
-/*   Updated: 2025/11/18 17:59:37 by tomas            ###   ########.fr       */
+/*   Updated: 2026/01/16 13:56:20 by skuik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define MALOC_FAIL_RAY_STR "Couldn't allocate memory for the 'ray' struct"
 # define MALOC_FAIL_PARSE_FILE "Couldn't allocate memory for the 'file_content'"
 # define MALOC_FAIL_GAME "Couldn't allocate memory for the 'game' struct"
-# define ARGUMENT_NUMBER_FAIL "The number of argluments needed is 1"
+# define ARGUMENT_NUMBER_FAIL "The number of arguments needed is 2"
 # define EXTENTION_CUB_FAIL "The map file type is not .cub"
 # define EXTENTION_PNG_FAIL "The map file type is not .png"
 # define FAIL_OPEN_FILE "The map file failed to open"
@@ -48,7 +48,7 @@
 # define MISSING_VALUE "Value is missing in the map file"
 # define DUP_VALUE "There is a duplicate in the map file"
 # define MALOC_FAIL_TEXTURE "Couldn't allocate memory for the texture variable"
-# define MALOC_FAIL_COLOUR "Couldn't allocate memory for the clour variable"
+# define MALOC_FAIL_COLOUR "Couldn't allocate memory for the color variable"
 # define TXT_LOAD_FAIL "One of the textures failed to load"
 # define CLR_WRONG_NUMBER "The color is not number"
 # define CLR_NOT_ENOUGH "Wrong format of color"
